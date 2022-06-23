@@ -18,7 +18,7 @@ function displayKey(keyVal) {
 		setResText(keyVal);
 	}
 	else {
-		document.getElementById("result").innerText += keyVal;
+		setResText(keyVal+getResText());
 	}
 }
 
