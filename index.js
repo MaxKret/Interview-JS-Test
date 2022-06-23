@@ -9,13 +9,13 @@ $(function () {
 		solve();
 	});
 	$('#clear').click(function () {
-		clearDisplay();
+		document.getElementById("result").innerHTML = '&nbsp;';
 	});
 });
 
 function displayKey(keyVal) {
-	if (document.getElementById("result").innerText == ' ') {
-		document.getElementById("result").innerText = keyVal;
+	if (getResText() == ' ') { // ' ' == '&nbsp;'
+		setResText(keyVal);
 	}
 	else {
 		document.getElementById("result").innerText += keyVal;
@@ -23,11 +23,15 @@ function displayKey(keyVal) {
 }
 
 function solve() {
-	let x = document.getElementById("result").innerText;
+	let x = getResText();
 	let y = Function("return " + x)();
-	document.getElementById("result").innerText = y;
+	setResText(y);
 }
 
-function clearDisplay() {
-	document.getElementById("result").innerHTML = '&nbsp;';
+function getResText() {
+	return document.getElementById("result").innerText;
+}
+
+function setResText(txt) {
+	document.getElementById("result").innerText = txt;
 }
